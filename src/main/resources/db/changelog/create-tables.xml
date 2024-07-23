@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="UNIX_TIMESTAMP()" dbms="mysql"/>
+    <changeSet id="1721716995332-1" author="Dmitriy Tumakov">
+        <createTable tableName="CUSTOMERS" schemaName="order_schema">
+            <column autoIncrement="true" name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="customer_id"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1721717264701-1" author="Dmitriy Tumakov">
+        <createTable tableName="ORDERS" schemaName="order_schema">
+            <column autoIncrement="true" name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="order_id"/>
+            </column>
+            <column name="date" type="varchar" value="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_id" type="integer">
+                <constraints nullable="false" foreignKeyName="customer_id" references="order_schema.CUSTOMERS(id)"/>
+            </column>
+            <column name="product_name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
