@@ -4,16 +4,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.netology.dao.repository.Repository;
+import ru.netology.dao.repository.ProductRepository;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/")
-public class Controller {
-    private final Repository repository;
+public class ProductController {
+    private final ProductRepository repository;
 
-    public Controller(Repository repository) {
+    public ProductController(ProductRepository repository) {
         this.repository = repository;
     }
 
