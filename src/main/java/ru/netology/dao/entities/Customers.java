@@ -24,6 +24,6 @@ public class Customers {
     @Column
     private String age;
 
-    @Column
-    private String phone_number;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 }

@@ -25,8 +25,8 @@ public class Orders {
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customers customers;
 
-    @Column
-    private String product_name;
+    @Column(name = "product_name")
+    private String productName;
 
     @Column
     private int amount;
